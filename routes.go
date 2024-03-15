@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/skapskap/harmony-api/internal/handlers"
+
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
@@ -11,7 +13,7 @@ import (
 )
 
 func routes() http.Handler {
-	r := chi.NewRouter();
+	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(httprate.Limit(
 		3,             // requests
@@ -31,6 +33,8 @@ func routes() http.Handler {
 
 	v1 := chi.NewRouter()
 	r.Mount("/api/v1", v1)
+
+	v1.Get("/user", handlers.UserInfo)
 
 	return r
 }

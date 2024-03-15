@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func userInfo(w http.ResponseWriter, r *http.Request) {
+func UserInfo(w http.ResponseWriter, r *http.Request) {
 	userInfo := map[string]string{
 		"username": "Gabriel Caldas",
 	}
