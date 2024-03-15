@@ -4,16 +4,13 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-
-	"github.com/go-chi/chi/v5"
 )
 
 func main()  {
-	r := chi.NewRouter();
 
 	srv := &http.Server{
 		Addr:         ":8080",
-		Handler:      r,
+		Handler:      routes(),
 		IdleTimeout:  time.Minute,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 30 * time.Second,
